@@ -1,4 +1,6 @@
 package ru.mirea.pkmn.uglovaa;
+import ru.mirea.pkmn.Card;
+
 import java.io.IOException;
 
 public class PkmnApplication {

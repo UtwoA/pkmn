@@ -1,5 +1,7 @@
 package ru.mirea.pkmn.uglovaa;
 
+import ru.mirea.pkmn.*;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;

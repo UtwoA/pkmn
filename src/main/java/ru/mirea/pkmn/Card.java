@@ -1,4 +1,4 @@
-package ru.mirea.pkmn.uglovaa;
+package ru.mirea.pkmn;
 
 import java.io.Serializable;
 import java.util.List;
@@ -44,15 +44,15 @@ public class Card implements Serializable {
     public String toString() {
         return "Card" +
                 "pokemonStage = " + pokemonStage + "\n" +
-                "name = '" + name + '\'' + "\n" +
+                "name = " + name + "\n" +
                 "hp = " + hp + "\n" +
                 "pokemonType = " + pokemonType + "\n" +
                 "evolvesFrom = " + evolvesFrom + "\n" +
                 "skills = " + skills.stream().map(AttackSkill::toString).reduce((a, b) -> a + ", " + b).orElse("") + '\n' +
                 "weaknessType = " + weaknessType + "\n" +
                 "resistanceType = " + resistanceType + "\n" +
-                "retreatCost = '" + retreatCost + '\'' + "\n" +
-                "gameSet = '" + gameSet + '\'' + "\n" +
+                "retreatCost = " + retreatCost + "\n" +
+                "gameSet = " + gameSet + "\n" +
                 "regulationMark = " + regulationMark + "\n" +
                 "pokemonOwner = " + pokemonOwner + "\n";
     }

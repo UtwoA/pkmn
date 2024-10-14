@@ -1,4 +1,4 @@
-package ru.mirea.pkmn.uglovaa;
+package ru.mirea.pkmn;
 
 import java.io.Serializable;
 

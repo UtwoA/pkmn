@@ -1,5 +1,7 @@
 package ru.mirea.pkmn.uglovaa;
 
+import ru.mirea.pkmn.Card;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
