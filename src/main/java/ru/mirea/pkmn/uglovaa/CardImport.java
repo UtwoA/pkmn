@@ -47,7 +47,7 @@ public class CardImport {
     }
 
     public Card importCardByte(String filename) {
-        Card card = null;
+        Card card = new Card();
         try (FileInputStream fileIn = new FileInputStream(filename);
              ObjectInputStream objectIn = new ObjectInputStream(fileIn)) {
             card = (Card) objectIn.readObject();

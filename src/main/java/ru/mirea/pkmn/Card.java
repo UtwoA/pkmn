@@ -48,7 +48,7 @@ public class Card implements Serializable {
                 "hp = " + hp + "\n" +
                 "pokemonType = " + pokemonType + "\n" +
                 "evolvesFrom = " + evolvesFrom + "\n" +
-                "skills = " + skills.stream().map(AttackSkill::toString).reduce((a, b) -> a + ", " + b).orElse("") + '\n' +
+                "skills = " + skills +
                 "weaknessType = " + weaknessType + "\n" +
                 "resistanceType = " + resistanceType + "\n" +
                 "retreatCost = " + retreatCost + "\n" +
