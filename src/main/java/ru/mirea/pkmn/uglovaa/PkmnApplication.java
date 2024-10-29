@@ -1,24 +1,36 @@
 package ru.mirea.pkmn.uglovaa;
 import ru.mirea.pkmn.Card;
 
-import java.io.IOException;
+import java.util.Scanner;
 
 public class PkmnApplication {
     public static final long serialVersionUID = 1L;
-    public static void main(String[] args) throws IOException {
-        `
+    public static void main(String[] args) {
         CardImport imp = new CardImport();
-        //Card card = imp.importCards(".\\src\\main\\resources\\my_card.txt");
+        CardExport exp = new CardExport();
+        Card card;
 
-        //CardExport exp = new CardExport();
-        //exp.exportCard(card);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Выберите метод импорта карты:");
+        System.out.println("1 - Импорт из текстового файла");
+        System.out.println("2 - Импорт из бинарного файла");
 
-        Card card = new Card();
+        int choice = scanner.nextInt();
 
-        //card = imp.importCardByte("Kangaskhan.crd");
-
-        card = imp.importCardByte("Magmortar.crd");
+        if (choice == 1) {
+            // Импорт из текстового файла
+            card = imp.importCards(".\\src\\main\\resources\\my_card.txt");
+            exp.exportCard(card);
+        } else if (choice == 2) {
+            // Импорт из бинарного файла
+            card = imp.importCardByte("Magmortar.crd");
+        } else {
+            System.out.println("Неверный выбор. Завершение программы.");
+            return;
+        }
 
         System.out.printf(card.toString());
+
+        scanner.close();
     }
 }
