@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a5cc986c-d1dc-46c7-a902-76b92ace4402" name="Changes" comment="rabi">
-
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/mirea/pkmn/uglovaa/web/jdbc/DatabaseService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/mirea/pkmn/uglovaa/web/jdbc/DatabaseServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/database.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Kangaskhan.crd" beforeDir="false" afterPath="$PROJECT_DIR$/Kangaskhan.crd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/mirea/pkmn/uglovaa/PkmnApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/mirea/pkmn/uglovaa/PkmnApplication.java" afterDir="false" />
@@ -18,8 +20,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -27,7 +29,6 @@
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="master" />
-
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -54,22 +55,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.PkmnApplication.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Алексей/IdeaProjects/pkmn&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/Алексей/IdeaProjects/Pkmn/src/main/java/ru/mirea/UglovAA/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.Lua&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.PkmnApplication.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "#2 on 4branch",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Алексей/IdeaProjects/pkmn",
+    "onboarding.tips.debug.path": "C:/Users/Алексей/IdeaProjects/Pkmn/src/main/java/ru/mirea/UglovAA/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.Lua"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Алексей\IdeaProjects\pkmn" />
@@ -98,7 +98,7 @@
       <list>
         <item itemvalue="Application.PkmnApplication" />
         <item itemvalue="Application.PkmnApplication" />
-
+        <item itemvalue="Application.PkmnApplication" />
       </list>
     </recent_temporary>
   </component>
