@@ -16,7 +16,7 @@ public class Student  implements Serializable {
     }
 
     public String getFamilyName() {
-        return patronymic;
+        return familyName;
     }
 
     public String getGroup() {
@@ -25,17 +25,17 @@ public class Student  implements Serializable {
 
     @Override
     public String toString() {
-        return firstName + " / " + surName + " / " + patronymic + " / " + group;
+        return firstName + " / " + surName + " / " + familyName + " / " + group;
     }
 
     private static final long serialVersionUID = 1L;
-    private String patronymic;
+    private String familyName;
     private String group;
 
     public Student(String firstName, String surName, String familyName, String group) {
         this.firstName = firstName;
         this.surName = surName;
-        this.patronymic = familyName;
+        this.familyName = familyName;
         this.group = group;
     }
 
@@ -48,7 +48,7 @@ public class Student  implements Serializable {
     }
 
     public void setFamilyName(String familyName) {
-        this.patronymic = familyName;
+        this.familyName = familyName;
     }
 
     public void setGroup(String group) {

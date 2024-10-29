@@ -48,7 +48,7 @@ public class Card implements Serializable {
                 "hp = " + hp + "\n" +
                 "pokemonType = " + pokemonType + "\n" +
                 "evolvesFrom = " + evolvesFrom + "\n" +
-                "skills = " + skills +
+                "skills = " + skills + "\n" +
                 "weaknessType = " + weaknessType + "\n" +
                 "resistanceType = " + resistanceType + "\n" +
                 "retreatCost = " + retreatCost + "\n" +

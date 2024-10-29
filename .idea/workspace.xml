@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a5cc986c-d1dc-46c7-a902-76b92ace4402" name="Changes" comment="rabi">
+
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Kangaskhan.crd" beforeDir="false" afterPath="$PROJECT_DIR$/Kangaskhan.crd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/mirea/pkmn/uglovaa/PkmnApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/mirea/pkmn/uglovaa/PkmnApplication.java" afterDir="false" />
@@ -14,13 +15,23 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="4branch" />
+        <entry key="$PROJECT_DIR$" value="master" />
+
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -43,6 +54,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Application.PkmnApplication.executor&quot;: &quot;Run&quot;,
@@ -86,6 +98,7 @@
       <list>
         <item itemvalue="Application.PkmnApplication" />
         <item itemvalue="Application.PkmnApplication" />
+
       </list>
     </recent_temporary>
   </component>
