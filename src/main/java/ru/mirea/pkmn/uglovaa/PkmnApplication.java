@@ -37,7 +37,7 @@ public class PkmnApplication {
             System.out.printf(cardEI.toString());
         } else if (choice == 2) {
             // Импорт из бинарного файла
-            cardEI = imp.importCardByte(".\\src\\main\\resources\\Starmie.crd");
+            cardEI = imp.importCardByte(".\\src\\main\\resources\\Kangaskhan.crd");
             System.out.printf(cardEI.toString());
         } else if (choice == 3) {
             DatabaseServiceImpl db = new DatabaseServiceImpl();
@@ -62,12 +62,11 @@ public class PkmnApplication {
             CardExport cardExport = new CardExport();
             cardExport.exportCard(card);
 
-            for(AttackSkill skill : card.getSkills()) {
-                System.out.println(skill);
-            }
-
             db.saveCardToDatabase(card);
-            Card card2 = db.getCardFromDatabase("Kangaskhan");
+            System.out.println("имя покемона введи да");
+            String selectedPokemon = scanner.next();
+
+            Card card2 = db.getCardFromDatabase(selectedPokemon);
             System.out.println(card2);
         }
         else {
