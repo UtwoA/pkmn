@@ -4,22 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a5cc986c-d1dc-46c7-a902-76b92ace4402" name="Changes" comment="rabi">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Kangaskhan.crd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Pyroar.crd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Starmie.crd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="a5cc986c-d1dc-46c7-a902-76b92ace4402" name="Changes" comment="реализация 4 практики, черновой вариант">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Kangaskhan.crd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Magmortar.crd" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Magmortar.crd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/mirea/pkmn/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/mirea/pkmn/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/mirea/pkmn/uglovaa/CardImport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/mirea/pkmn/uglovaa/CardImport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/mirea/pkmn/AttackSkill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/mirea/pkmn/AttackSkill.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/mirea/pkmn/uglovaa/PkmnApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/mirea/pkmn/uglovaa/PkmnApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/mirea/pkmn/uglovaa/web/http/PkmnHttpClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/mirea/pkmn/uglovaa/web/http/PkmnHttpClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/mirea/pkmn/uglovaa/web/jdbc/DatabaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/mirea/pkmn/uglovaa/web/jdbc/DatabaseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/mirea/pkmn/uglovaa/web/jdbc/DatabaseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/mirea/pkmn/uglovaa/web/jdbc/DatabaseServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/my_card.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/my_card.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,13 +127,22 @@
       <option name="project" value="LOCAL" />
       <updated>1728902205623</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="реализация 4 практики, черновой вариант">
+      <option name="closed" value="true" />
+      <created>1730980708079</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1730980708079</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="minef" />
     <MESSAGE value="rabi" />
-    <option name="LAST_COMMIT_MESSAGE" value="rabi" />
+    <MESSAGE value="реализация 4 практики, черновой вариант" />
+    <option name="LAST_COMMIT_MESSAGE" value="реализация 4 практики, черновой вариант" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -69,7 +69,6 @@ public class DatabaseServiceImpl implements DatabaseService {
     @Override
     public Card getCardFromDatabase(String cardName) throws SQLException {
         String query = "SELECT * FROM card WHERE name = ?";
-        System.out.println("smth");
         try (PreparedStatement ps = connection.prepareStatement(query)) {
             ps.setString(1, cardName);
             try (ResultSet rs = ps.executeQuery()) {
