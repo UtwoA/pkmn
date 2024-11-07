@@ -9,20 +9,15 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 import java.io.IOException;
 
 public class PkmnHttpClient {
-
     Retrofit client;
-
     PokemonTcgAPI tcgAPI;
-
     public PkmnHttpClient(){
         client = new Retrofit.Builder()
                 .baseUrl("https://api.pokemontcg.io")
                 .addConverterFactory(JacksonConverterFactory.create(new JsonMapper()))
                 .build();
-
         tcgAPI = client.create(PokemonTcgAPI.class);
     }
-
 
     public JsonNode getPokemonCard(String name, String number) throws IOException {
         String requestQuery = "name:\""+name+"\"" + " " + "number:"+number;
