@@ -1,6 +1,7 @@
 package ru.mirea.pkmn;
 
 import java.io.Serializable;
+import java.lang.classfile.AnnotationElement;
 import java.util.List;
 
 public class Card implements Serializable {
@@ -18,6 +19,7 @@ public class Card implements Serializable {
     private String gameSet;
     private char regulationMark;
     private Student pokemonOwner;
+    private String number;
 
     public Card() {}
 
@@ -25,7 +27,7 @@ public class Card implements Serializable {
         this.name = name;
     }
 
-    public Card(PokemonStage pokemonStage, String name, int hp, EnergyType pokemonType, Card evolvesFrom, List<AttackSkill> skills, EnergyType weaknessType, EnergyType resistanceType, String retreatCost, String gameSet, char regulationMark, Student pokemonOwner) {
+    public Card(PokemonStage pokemonStage, String name, int hp, EnergyType pokemonType, Card evolvesFrom, List<AttackSkill> skills, EnergyType weaknessType, EnergyType resistanceType, String retreatCost, String gameSet, char regulationMark, Student pokemonOwner, String number) {
         this.pokemonStage = pokemonStage;
         this.name = name;
         this.hp = hp;
@@ -38,23 +40,25 @@ public class Card implements Serializable {
         this.gameSet = gameSet;
         this.regulationMark = regulationMark;
         this.pokemonOwner = pokemonOwner;
+        this.number = number;
     }
 
     @Override
     public String toString() {
-        return "Card" +
+        return "Card\n" +
                 "pokemonStage = " + pokemonStage + "\n" +
                 "name = " + name + "\n" +
                 "hp = " + hp + "\n" +
                 "pokemonType = " + pokemonType + "\n" +
-                "evolvesFrom = " + evolvesFrom + "\n" +
+                "evolvesFrom = \n" + evolvesFrom + "\n**\n" +
                 "skills = " + skills + "\n" +
                 "weaknessType = " + weaknessType + "\n" +
                 "resistanceType = " + resistanceType + "\n" +
                 "retreatCost = " + retreatCost + "\n" +
                 "gameSet = " + gameSet + "\n" +
                 "regulationMark = " + regulationMark + "\n" +
-                "pokemonOwner = " + pokemonOwner + "\n";
+                "pokemonOwner = " + pokemonOwner + "\n" +
+                "number = " + number + "\n";
     }
 
 
@@ -91,6 +95,10 @@ public class Card implements Serializable {
         this.skills = skills;
     }
 
+    public List<AttackSkill> getSkills() {
+        return skills;
+    }
+
     public void setWeaknessType(EnergyType weaknessType) {
         this.weaknessType = weaknessType;
     }
@@ -113,5 +121,51 @@ public class Card implements Serializable {
 
     public void setPokemonOwner(Student pokemonOwner) {
         this.pokemonOwner = pokemonOwner;
+    }
+    public String getNumber() {
+        return number;
+    }
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public Student getPokemonOwner() {
+        return pokemonOwner;
+    }
+
+    public Card getEvolvesFrom() {
+        return evolvesFrom;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public Object getGameSet() {
+        return gameSet;
+    }
+
+    public PokemonStage getPokemonStage() {
+        return pokemonStage;
+    }
+
+    public String getRetreatCost() {
+        return retreatCost;
+    }
+
+    public EnergyType getWeaknessType() {
+        return weaknessType;
+    }
+
+    public EnergyType getResistanceType() {
+        return resistanceType;
+    }
+
+    public EnergyType getPokemonType() {
+        return pokemonType;
+    }
+
+    public char getRegulationMark() {
+        return regulationMark;
     }
 }

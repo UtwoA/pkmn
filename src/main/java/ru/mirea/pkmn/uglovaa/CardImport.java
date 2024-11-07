@@ -39,6 +39,7 @@ public class CardImport {
             String line12 = br.readLine().split("\\. ")[1];
             String[] nameStudent = line12.split(" / ");
             card.setPokemonOwner(new Student(nameStudent[0], nameStudent[1], nameStudent[2], nameStudent[3]));
+            card.setNumber(br.readLine().split("\\. ")[1]);
         }
         catch (IOException e) {
             System.err.println("Error while importing card: " + e.getMessage());
