@@ -17,6 +17,8 @@ public class AttackSkill implements Serializable {
         this.damage = damage;
     }
 
+    public AttackSkill() {}
+
     public String getName() {
         return name;
     }
@@ -51,6 +53,9 @@ public class AttackSkill implements Serializable {
 
     @Override
     public String toString() {
-        return cost + " / " + name + " / " + damage + " / " + description;
+        return "цена: " + cost + ", " +
+                "описание: " + description + ", " +
+                "название: " + name + ", " +
+                "урон: " + damage;
     }
 }

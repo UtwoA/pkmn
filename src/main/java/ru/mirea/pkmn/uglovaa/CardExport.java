@@ -1,22 +1,23 @@
 package ru.mirea.pkmn.uglovaa;
 
 import ru.mirea.pkmn.Card;
-
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
 public class CardExport {
-    public void exportCard(Card card) {
-        String filename = card.getName() + ".crd";
+    private static final long serialVersionUID = 1L;
 
-        try (FileOutputStream fileOut = new FileOutputStream(filename);
-             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut)) {
+    public void saveCard(Card card) {
+        String fileName = card.getName() + ".crd";
 
-            objectOut.writeObject(card);
-            System.out.println("Card exported as " + filename);
-        }
-        catch (IOException e) {
+        try (FileOutputStream fileOut = new FileOutputStream(fileName); // try-with-resources xd
+             ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
+
+            out.writeObject(card);
+            System.out.println("Card exported as " + fileName);
+        } catch (IOException e) {
+            System.err.println("Shit happends:\n " + e.getMessage());
             e.printStackTrace();
         }
     }

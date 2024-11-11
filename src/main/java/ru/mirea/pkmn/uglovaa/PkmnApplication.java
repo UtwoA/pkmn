@@ -1,78 +1,136 @@
 package ru.mirea.pkmn.uglovaa;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import ru.mirea.pkmn.AttackSkill;
 import ru.mirea.pkmn.Card;
 import ru.mirea.pkmn.uglovaa.web.http.PkmnHttpClient;
 import ru.mirea.pkmn.uglovaa.web.jdbc.DatabaseServiceImpl;
+import ru.mirea.pkmn.uglovaa.*;
+
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class PkmnApplication {
-    public static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-    public static void main(String[] args) throws IOException, SQLException {
-        CardImport imp = new CardImport();
-        CardExport exp = new CardExport();
-        Card cardEI;
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Выберите метод импорта карты:");
-        System.out.println("0 - Ничево");
-        System.out.println("1 - Импорт из текстового файла");
-        System.out.println("2 - Импорт из бинарного файла");
-        System.out.println("3 - PARSE MODE");
-
-        int choice = scanner.nextInt();
-        if (choice == 0){
-            System.out.println("\n");
+    public static void main(String[] args) {
+        try {
+            executeCardOperations();
+        } catch (IOException | SQLException e) {
+            System.err.println("Ошибка при выполнении операции: " + e.getMessage());
         }
-        else if (choice == 1) {
-            // Импорт из текстового файла
-            cardEI = imp.importCards(".\\src\\main\\resources\\my_card.txt");
-            exp.exportCard(cardEI);
-            System.out.printf(cardEI.toString());
-        } else if (choice == 2) {
-            // Импорт из бинарного файла
-            cardEI = imp.importCardByte(".\\src\\main\\resources\\Kangaskhan.crd");
-            System.out.printf(cardEI.toString());
-        } else if (choice == 3) {
-            DatabaseServiceImpl db = new DatabaseServiceImpl();
-            Card card = imp.importCards(".\\src\\main\\resources\\my_card.txt");
-            // вот та ебала которую делал
+    }
+
+    private static void executeCardOperations() throws IOException, SQLException {
+        Card loadedCard = loadCardFromFile("src\\main\\resources\\my_card.txt");
+
+        if (loadedCard != null) {
+            displayLoadedCard(loadedCard);
+            displayEvolutionDetails(loadedCard);
+
             PkmnHttpClient pkmnHttpClient = new PkmnHttpClient();
-            JsonNode card1 = pkmnHttpClient.getPokemonCard(card.getName(), card.getNumber());
-            System.out.println(card1.toPrettyString());
+            JsonNode cardJson = fetchCardJson(pkmnHttpClient, loadedCard);
+
+            updateCardSkillsFromJson(loadedCard, cardJson);
+            exportCard(loadedCard);
+            deserializeAndDisplayCard("Kangaskhan.crd");
 
 
-            Stream<JsonNode> stream = card1.findValues("attacks").stream();
-            JsonNode attacks = stream.toList().getFirst();
-            stream.close();
-            for(JsonNode attack : attacks) {
-                for(AttackSkill skill : card.getSkills()) {
-                    if(skill.getName().equals(attack.findValue("name").asText())) {
-                        skill.setDescription(attack.findValue("text").asText());
-                    }
-                }
-            }
 
-            CardExport cardExport = new CardExport();
-            cardExport.exportCard(card);
+            DatabaseServiceImpl dbService = new DatabaseServiceImpl();
 
-            db.saveCardToDatabase(card);
-            System.out.println("имя покемона введи да");
-            String selectedPokemon = scanner.next();
+            //dbService.createPokemonOwner(loadedCard.getPokemonOwner());
+            // ай на кондициях как жеска добавляем себя в таблицу
+            //dbService.saveCardToDatabase(loadedCard);
 
-            Card card2 = db.getCardFromDatabase(selectedPokemon);
-            System.out.println(card2);
+
+            searchCardInDatabase(dbService, "Kangaskhan");
+            searchStudentInDatabase(dbService, "Углов Алексей Андреевич");
+        } else {
+            System.out.println("Данные не найдены.");
         }
-        else {
-            System.out.println("Неверный выбор. Завершение программы.");
-            return;
+    }
+
+    private static Card loadCardFromFile(String filePath) {
+        CardImport cardImport = new CardImport(filePath);
+        return cardImport.loadCard();
+    }
+
+    private static void displayLoadedCard(Card card) {
+        //System.out.println("from my_card.txt"); // лаба номер 3
+        //System.out.println(card);
+    }
+
+    private static void displayEvolutionDetails(Card card) {
+        if (card.getEvolvesFrom() != null) {
+            //System.out.println("Эволюционирует из:"); // лаба номер 3.5 из-за глеба епта
+            //System.out.println(card.getEvolvesFrom());
         }
-        scanner.close();
+    }
+
+    private static JsonNode fetchCardJson(PkmnHttpClient httpClient, Card card) throws IOException {
+        JsonNode cardJson = httpClient.getPokemonCard(card.getName(), card.getNumber());
+        //System.out.println("JSON-версия покемончика с сайтика"); // лаба 4, json
+        //System.out.println(cardJson.toPrettyString());
+        return cardJson;
+    }
+
+    private static void updateCardSkillsFromJson(Card card, JsonNode cardJson) {
+        Set<String> attackDescriptions = extractAttackDescriptionsFromJson(cardJson);
+        List<AttackSkill> skills = card.getSkills();
+
+        int skillsToUpdate = Math.min(skills.size(), attackDescriptions.size());
+        List<String> attackDescriptionsList = new ArrayList<>(attackDescriptions);
+
+        for (int i = 0; i < skillsToUpdate; i++) {
+            skills.get(i).setDescription(attackDescriptionsList.get(i));
+        }
+
+        //System.out.println("Карточка из JSON-версии покемончика"); // JSON to CARD + texts of Skills
+        //System.out.println(card);
+    }
+
+    private static Set<String> extractAttackDescriptionsFromJson(JsonNode cardJson) {
+        return cardJson.findValues("attacks")
+                .stream()
+                .flatMap(attack -> attack.findValues("text").stream())
+                .map(JsonNode::toPrettyString)
+                .collect(Collectors.toSet());
+    }
+
+    private static void exportCard(Card card) {
+        CardExport cardExport = new CardExport();
+        cardExport.saveCard(card);
+
+        if (card.getEvolvesFrom() != null) {
+            CardExport evolvesExport = new CardExport();
+            evolvesExport.saveCard(card.getEvolvesFrom());
+        }
+    }
+
+    private static void deserializeAndDisplayCard(String filePath) { // десериализация
+        CardImport cardImport = new CardImport(filePath);
+        Card deserializedCard = cardImport.deserializeCard(filePath);
+
+        if (deserializedCard != null) {
+            //System.out.println("Нагло украл карточку одногруппника? Тобой гордятся. Делаем десериализацию");
+            // вот это мое невезучее место
+            // когда здесь 140 пролетаеш...
+            //System.out.println(deserializedCard);
+        }
+    }
+
+    private static void searchCardInDatabase(DatabaseServiceImpl dbService, String cardName) throws SQLException, IOException {
+        System.out.println("Покемон из БД + студент снизу"); // вынимаем из БД по имени
+                                                             // достаем двойной итерацией потому что потому
+        System.out.println(dbService.getCardFromDatabase(cardName));
+    }
+
+    private static void searchStudentInDatabase(DatabaseServiceImpl dbService, String studentName) throws SQLException {
+        //System.out.println("Студент из БД"); // вынимаем из БД по имени
+        System.out.println(dbService.getStudentFromDatabase(studentName));
     }
 }

@@ -2,17 +2,15 @@ package ru.mirea.pkmn.uglovaa.web.jdbc;
 
 import ru.mirea.pkmn.Card;
 import ru.mirea.pkmn.Student;
-import java.sql.SQLException;
-import java.util.UUID;
+
+import java.io.IOException;
 
 public interface DatabaseService {
-    Card getCardFromDatabase(String cardName) throws SQLException;
+    Card getCardFromDatabase(String cardName) throws IOException;
 
-    Student getStudentFromDatabaseById(UUID uuid) throws SQLException;
+    Student getStudentFromDatabase(String studentFullName);
 
-    Student getStudentFromDatabase(String studentName) throws SQLException;
+    void saveCardToDatabase(Card card) throws IOException;
 
-    void saveCardToDatabase(Card card) throws SQLException;
-
-    void createPokemonOwner(Student owner) throws SQLException;
+    void createPokemonOwner(Student owner);
 }

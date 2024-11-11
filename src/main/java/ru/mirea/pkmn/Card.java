@@ -1,7 +1,6 @@
 package ru.mirea.pkmn;
 
 import java.io.Serializable;
-import java.lang.classfile.AnnotationElement;
 import java.util.List;
 
 public class Card implements Serializable {
@@ -19,15 +18,11 @@ public class Card implements Serializable {
     private String gameSet;
     private char regulationMark;
     private Student pokemonOwner;
-    private String number;
+    public String number;
 
-    public Card() {}
-
-    public Card(String name) {
-        this.name = name;
-    }
-
-    public Card(PokemonStage pokemonStage, String name, int hp, EnergyType pokemonType, Card evolvesFrom, List<AttackSkill> skills, EnergyType weaknessType, EnergyType resistanceType, String retreatCost, String gameSet, char regulationMark, Student pokemonOwner, String number) {
+    public Card(PokemonStage pokemonStage, String name, int hp, EnergyType pokemonType, Card evolvesFrom,
+                List<AttackSkill> skills, EnergyType weaknessType, EnergyType resistanceType, String retreatCost,
+                String gameSet, String number, char regulationMark, Student pokemonOwner) {
         this.pokemonStage = pokemonStage;
         this.name = name;
         this.hp = hp;
@@ -38,29 +33,16 @@ public class Card implements Serializable {
         this.resistanceType = resistanceType;
         this.retreatCost = retreatCost;
         this.gameSet = gameSet;
+        this.number = number;
         this.regulationMark = regulationMark;
         this.pokemonOwner = pokemonOwner;
-        this.number = number;
     }
 
-    @Override
-    public String toString() {
-        return "Card\n" +
-                "pokemonStage = " + pokemonStage + "\n" +
-                "name = " + name + "\n" +
-                "hp = " + hp + "\n" +
-                "pokemonType = " + pokemonType + "\n" +
-                "evolvesFrom = " + evolvesFrom + "\n**\n" +
-                "skills = " + skills + "\n" +
-                "weaknessType = " + weaknessType + "\n" +
-                "resistanceType = " + resistanceType + "\n" +
-                "retreatCost = " + retreatCost + "\n" +
-                "gameSet = " + gameSet + "\n" +
-                "regulationMark = " + regulationMark + "\n" +
-                "pokemonOwner = " + pokemonOwner + "\n" +
-                "number = " + number + "\n";
-    }
+    public Card() {}
 
+    public PokemonStage getPokemonStage() {
+        return pokemonStage;
+    }
 
     public void setPokemonStage(PokemonStage pokemonStage) {
         this.pokemonStage = pokemonStage;
@@ -71,101 +53,120 @@ public class Card implements Serializable {
     }
 
     public void setName(String name) {
-
         this.name = name;
-    }
-
-    public void setHp(int hp) {
-
-        this.hp = hp;
-    }
-
-    public void setPokemonType(EnergyType pokemonType) {
-
-        this.pokemonType = pokemonType;
-    }
-
-    public void setEvolvesFrom(Card evolvesFrom) {
-
-        this.evolvesFrom = evolvesFrom;
-    }
-
-    public void setSkills(List<AttackSkill> skills) {
-
-        this.skills = skills;
-    }
-
-    public List<AttackSkill> getSkills() {
-        return skills;
-    }
-
-    public void setWeaknessType(EnergyType weaknessType) {
-        this.weaknessType = weaknessType;
-    }
-
-    public void setResistanceType(EnergyType resistanceType) {
-        this.resistanceType = resistanceType;
-    }
-
-    public void setRetreatCost(String retreatCost) {
-        this.retreatCost = retreatCost;
-    }
-
-    public void setGameSet(String gameSet) {
-        this.gameSet = gameSet;
-    }
-
-    public void setRegulationMark(char regulationMark) {
-        this.regulationMark = regulationMark;
-    }
-
-    public void setPokemonOwner(Student pokemonOwner) {
-        this.pokemonOwner = pokemonOwner;
-    }
-    public String getNumber() {
-        return number;
-    }
-    public void setNumber(String number) {
-        this.number = number;
-    }
-
-    public Student getPokemonOwner() {
-        return pokemonOwner;
-    }
-
-    public Card getEvolvesFrom() {
-        return evolvesFrom;
     }
 
     public int getHp() {
         return hp;
     }
 
-    public Object getGameSet() {
-        return gameSet;
-    }
-
-    public PokemonStage getPokemonStage() {
-        return pokemonStage;
-    }
-
-    public String getRetreatCost() {
-        return retreatCost;
-    }
-
-    public EnergyType getWeaknessType() {
-        return weaknessType;
-    }
-
-    public EnergyType getResistanceType() {
-        return resistanceType;
+    public void setHp(int hp) {
+        this.hp = hp;
     }
 
     public EnergyType getPokemonType() {
         return pokemonType;
     }
 
+    public void setPokemonType(EnergyType pokemonType) {
+        this.pokemonType = pokemonType;
+    }
+
+    public Card getEvolvesFrom() {
+        return evolvesFrom;
+    }
+
+    public void setEvolvesFrom(Card evolvesFrom) {
+        this.evolvesFrom = evolvesFrom;
+    }
+
+    public List<AttackSkill> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(List<AttackSkill> skills) {
+        this.skills = skills;
+    }
+
+    public EnergyType getWeaknessType() {
+        return weaknessType;
+    }
+
+    public void setWeaknessType(EnergyType weaknessType) {
+        this.weaknessType = weaknessType;
+    }
+
+    public EnergyType getResistanceType() {
+        return resistanceType;
+    }
+
+    public void setResistanceType(EnergyType resistanceType) {
+        this.resistanceType = resistanceType;
+    }
+
+    public String getRetreatCost() {
+        return retreatCost;
+    }
+
+    public void setRetreatCost(String retreatCost) {
+        this.retreatCost = retreatCost;
+    }
+
+    public String getGameSet() {
+        return gameSet;
+    }
+
+    public void setGameSet(String gameSet) {
+        this.gameSet = gameSet;
+    }
+
     public char getRegulationMark() {
         return regulationMark;
+    }
+
+    public void setRegulationMark(char regulationMark) {
+        this.regulationMark = regulationMark;
+    }
+
+    public Student getPokemonOwner() {
+        return pokemonOwner;
+    }
+
+    public void setPokemonOwner(Student pokemonOwner) {
+        this.pokemonOwner = pokemonOwner;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        result.append("Card\n")
+                .append("pokemonStage: ").append(pokemonStage).append("\n")
+                .append("name: ").append(name).append("\n")
+                .append("hp: ").append(hp).append("\n")
+                .append("pokemonType: ").append(pokemonType).append("\n")
+                .append("skills: ").append(skills).append("\n")
+                .append("weaknessType: ").append(weaknessType != null ? weaknessType : "-").append("\n")
+                .append("resistanceType: ").append(resistanceType != null ? resistanceType : "-").append("\n")
+                .append("retreatCost: ").append(retreatCost).append("\n")
+                .append("gameSet: ").append(gameSet).append("\n")
+                .append("number: ").append(number).append("\n")
+                .append("regulationMark: ").append(regulationMark).append("\n")
+                .append(pokemonOwner != null ? "Владелец, амбассадор, хозяин ну и просто студент лучшего в мире вуза, а именно МИРЭА: " + pokemonOwner + "\n" : "");
+
+        if (evolvesFrom != null) {
+            result.append("evolvesFrom").append(evolvesFrom.toString());
+        } else {
+            result.append("чювак с детдома (evolvesFrom = null)");
+        }
+
+        return result.toString();
     }
 }
