@@ -57,6 +57,40 @@ public class DatabaseServiceImpl implements DatabaseService {
         }
     }
 
+    private Student getPokemonOwner(UUID ownerUUID){
+        String query = "SELECT * FROM student WHERE id = ?";
+        Properties databaseProperties = new Properties();
+
+        try{
+            databaseProperties.load(new FileInputStream("src/main/resources/database.properties"));
+            try (Connection connection = DriverManager.getConnection(
+                    databaseProperties.getProperty("database.url"),
+                    databaseProperties.getProperty("database.user"),
+                    databaseProperties.getProperty("database.password"));
+                 PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                preparedStatement.setObject(1, ownerUUID);
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    if (resultSet.next()) {
+                        Student student = new Student();
+
+                        student.setFamilyName(resultSet.getString("familyName"));
+                        student.setFirstName(resultSet.getString("firstName"));
+                        student.setSurName(resultSet.getString("patronicName"));
+                        student.setGroup(resultSet.getString("group"));
+
+                        return student;
+                    }
+                }
+            } catch (SQLException e) {
+                System.err.println("Ошибка получения карты из базы данных: " + e.getMessage());
+                return null;
+            }
+            return null;
+        } catch (IOException e) {
+            System.err.println("Ошибка загрузки файла: " + e.getMessage());
+        }
+        return null;
+    }
     @Override
     public void saveCardToDatabase(Card card) throws IOException {
         Student owner = card.getPokemonOwner();
@@ -176,6 +210,7 @@ public class DatabaseServiceImpl implements DatabaseService {
     }
 
     private Student getStudentByUUID(String uuid) {
-        return uuid != null ? getStudentFromDatabase(uuid) : null;
+        System.out.println("here");
+        return uuid != null ? getPokemonOwner(UUID.fromString(uuid)) : null;
     }
 }

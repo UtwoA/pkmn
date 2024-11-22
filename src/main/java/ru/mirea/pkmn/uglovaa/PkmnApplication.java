@@ -36,15 +36,15 @@ public class PkmnApplication {
 
             updateCardSkillsFromJson(loadedCard, cardJson);
             exportCard(loadedCard);
-            deserializeAndDisplayCard("Kangaskhan.crd");
+            deserializeAndDisplayCard("src\\main\\resources\\Kangaskhan.crd");
 
 
 
             DatabaseServiceImpl dbService = new DatabaseServiceImpl();
 
-            //dbService.createPokemonOwner(loadedCard.getPokemonOwner());
+            dbService.createPokemonOwner(loadedCard.getPokemonOwner());
             // ай на кондициях как жеска добавляем себя в таблицу
-            //dbService.saveCardToDatabase(loadedCard);
+            dbService.saveCardToDatabase(loadedCard);
 
 
             searchCardInDatabase(dbService, "Kangaskhan");
@@ -73,8 +73,8 @@ public class PkmnApplication {
 
     private static JsonNode fetchCardJson(PkmnHttpClient httpClient, Card card) throws IOException {
         JsonNode cardJson = httpClient.getPokemonCard(card.getName(), card.getNumber());
-        //System.out.println("JSON-версия покемончика с сайтика"); // лаба 4, json
-        //System.out.println(cardJson.toPrettyString());
+        System.out.println("JSON-версия покемончика с сайтика"); // лаба 4, json
+        System.out.println(cardJson.toPrettyString());
         return cardJson;
     }
 
